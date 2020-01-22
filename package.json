@@ -5,6 +5,9 @@
   "repository": "https://github.com/dongqui/cat-fairy-client.git",
   "author": "dongqui <kimwinner90@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -23,5 +26,11 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "fetch": "^1.1.0",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0"
   }
 }
