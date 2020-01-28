@@ -109,7 +109,6 @@ export async function fetchDataForAllYears(username, format) {
 
 async function test() {
   console.log(await fetchYears('dongqui'));
-  console.log('dd')
 }
 
 test();
