@@ -5,20 +5,14 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
+      <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/login/oauth/authorize?client_id=5c82987314849c415fa5&scope=user"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          github
         </a>
-      </header>
     </div>
   );
 }
