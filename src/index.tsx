@@ -5,10 +5,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import { store } from './store';
-import { createBrowserHistory } from 'history';
+import { store, history } from './store';
 
-const history = createBrowserHistory();
 ReactDOM.render((
   <Provider store={store}>
     <ConnectedRouter history={history}>
