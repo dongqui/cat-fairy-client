@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Location } from 'history';
 import queryString from 'query-string';
 
@@ -7,6 +7,11 @@ interface Iprops {
 }
 function CatchToken({ location } :Iprops) {
   const { code } = queryString.parse(location.search);
+
+  useEffect(() => {
+
+  }, [])
+  
   return (
     <>
       <h2>{code}</h2>

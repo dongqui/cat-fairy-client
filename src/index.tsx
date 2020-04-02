@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import { store, history } from './store';
+import { store, history } from './redux/store';
 
 ReactDOM.render((
   <Provider store={store}>

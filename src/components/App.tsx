@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import CatchToken from './CatchToken';
+import Token from './Token';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           github
         </a>
         <Switch>
-          <Route exact path="/github/callback" component={CatchToken}/>
+          <Route exact path="/github/callback" component={Token}/>
         </Switch>
     </div>
   );
