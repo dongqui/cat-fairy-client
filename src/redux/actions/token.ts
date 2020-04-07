@@ -1,14 +1,17 @@
-export const REQUEST_TOKEN = 'GET_TOKEN' as const;
+import { createRequestTypes, action, REQUEST, SUCCESS, FAILURE } from './index';
 
 
-function action(type, payload = {}) {
-  return {type, ...payload}
-}
+export const TOKEN = createRequestTypes('TOKEN');
 
 export type TokenAction =
-  | ReturnType<typeof requestToken>;
+  | ReturnType<typeof token.request>
+  | ReturnType<typeof token.success>
+  | ReturnType<typeof token.failure>
+;
 
-
-export function requestToken() {
-  
+export const token = {
+  request: (code: string) => action(TOKEN[REQUEST], { code }),
+  success: (token: string) => action(TOKEN[SUCCESS], { token }),
+  failure: (error: object) => action(TOKEN[FAILURE], { error }),
 }
+
