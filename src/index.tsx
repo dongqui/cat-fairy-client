@@ -3,16 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import { rootReducer, history } from './modules/index';
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga'
-import rootSaga from './saga/index';
+import { store, history } from './store';
+import App from './components/App';
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(rootSaga);
+
 
 ReactDOM.render((
   <Provider store={store}>
