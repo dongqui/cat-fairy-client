@@ -32,7 +32,7 @@ export const fetchEntity =
   return function *(...args: Param) {
     yield put(entity.request(...args));
     try {
-      const data = yield call(api, ...args);
+      const data = (yield call(api, ...args)).data;
       yield put(entity.success(data));
     } catch (err) {
       yield put(entity.failure(err));

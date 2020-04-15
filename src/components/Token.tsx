@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../modules/index';
 import queryString from 'query-string';
 import { Location } from 'history';
-import { fetchToken } from '../modules/token';
+import { fetchToken } from '../modules/auth';
 
 interface IProps {
   location: Location;
@@ -11,12 +11,12 @@ interface IProps {
 
 function Token({ location } :IProps) {
   const dispatch = useDispatch();
-  const { token } = useTypedSelector(state => state.token);
+  const { user } = useTypedSelector(state => state.token);
   let { code } = queryString.parse(location.search);
-  alert(token);
+  
   useEffect(() => {
     if (code && !Array.isArray(code)) {
-      dispatch(fetchToken(code));
+      dispatch(fetchToken({ code }));
     }
   }, [])
   

@@ -1,9 +1,15 @@
 import axios from './axios';
 
 
-interface getTokenData {
-  token: string
+interface IUser {
+  token: string,
+  username: string,
+  github_id: string,
+  email: string
+}
+interface IGetTokenApi {
+  data: IUser
 }
 export const getTokenApi = async (code: string) => {
-  return await axios.get<getTokenData>(`/auth/github?code=${code}`);
+  return await axios.post<IGetTokenApi>(`/api/auth/github`, { code });
 }

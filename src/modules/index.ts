@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import token from './token';
+import token from './auth';
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import createHistory from 'history/createBrowserHistory';
 
