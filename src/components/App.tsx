@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Token from './Token';
 
 function App() {
+  
   return (
     <div className="App">
       <a
