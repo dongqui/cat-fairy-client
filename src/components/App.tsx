@@ -1,19 +1,25 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Token from './Token';
+import Login from './login/Login';
+import { navigate_replace } from '../modules/navigate';
 
 function App() {
+  const dispatch = useDispatch();
   
+  useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    if (!token) {
+      dispatch(navigate_replace('/login'));
+    } else {
+
+    }
+  }, [dispatch])
   return (
     <div className="App">
-      <a
-          className="App-link"
-          href="https://github.com/login/oauth/authorize?client_id=5c82987314849c415fa5&scope=user"
-          rel="noopener noreferrer"
-        >
-          github
-        </a>
         <Switch>
+          <Route exact path="/login" component={Login} />
           <Route exact path="/github/callback" component={Token}/>
         </Switch>
     </div>
