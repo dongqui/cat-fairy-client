@@ -2,15 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../modules/index';
 import queryString from 'query-string';
-import { Location, History } from 'history';
+import { Location } from 'history';
 import { fetchToken } from '../modules/auth';
+import { navigate_replace } from '../modules/navigate';
+import { setTokenOnAxiosHeader } from '../api/index';
 
 interface IProps {
   location: Location,
-  history: History
 }
 
-function Token({ location, history } :IProps) {
+function Token({ location } :IProps) {
   const dispatch = useDispatch();
   const { user } = useTypedSelector(state => state.auth);
   
@@ -23,13 +24,14 @@ function Token({ location, history } :IProps) {
     // todo - useEffect dependency warning 해결 검색, 자동 로그인 물어보는 창
     if (user) {
       window.localStorage.setItem('token', user.token);
-      history.replace('/');
+      setTokenOnAxiosHeader(user.token);
+      dispatch(navigate_replace('/main'));
     }
-  }, [user, history])
+  }, [user, dispatch])
   
   return (
     <>
-      <h2>asdfsdf</h2>
+      <h2>로딩 중...</h2>
     </>
   )
 }

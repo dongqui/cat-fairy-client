@@ -1,11 +1,12 @@
-import { all } from 'redux-saga/effects';
-import { watchRequestToken } from './auth';
+import { all, fork } from 'redux-saga/effects';
+import { watchRequestToken, watchLogin } from './auth';
 import { watchNavigatePush, watchNavigateReplace  } from './navigate';
 
 export default function* rootSaga() {
   yield all([
-    watchRequestToken(),
-    watchNavigatePush(),
-    watchNavigateReplace()
+    fork(watchLogin),
+    fork(watchRequestToken),
+    fork(watchNavigatePush),
+    fork(watchNavigateReplace)
   ])
 }
