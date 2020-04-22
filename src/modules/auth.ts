@@ -29,6 +29,7 @@ const reducer = (state: IAuthState = initState, action: TokenApiActionTypes | Lo
   switch (type) {
     case LOGIN_SUCCESS:
     case TOKEN_SUCCESS:
+      console.log(payload, type)
       return {
         ...initState,
         ...payload
