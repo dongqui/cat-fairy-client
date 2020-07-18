@@ -1,3 +1,2 @@
-
-
+import { FirebaseAuth } from '../firebase';
 
