@@ -1,8 +1,10 @@
 import React from 'react';
 import './Login.css';
-import fairy from '../../asset/img/pairFairy.png'
+import fairy from '../../asset/img/pairFairy.png';
+import { DefaultButton } from "../shared/Buttons";
 
 function Login() {
+
   return (
     <main className="login-container">
       <section className="login-left login-base">
@@ -16,12 +18,15 @@ function Login() {
       <section className="login-right login-base">
         <div className="login-input-container">
           <h2>로그인</h2>
-          <input className="login-input login-email"/>
-          <input className="login-input login-password"/>
+          <input className="login-input login-email" placeholder="ID"/>
+          <input className="login-input login-password" placeholder="Password"/>
+          <button className="login-btn">로그인</button>
         </div>
       </section>
     </main>
   )
 }
+
+
 
 export default Login;
