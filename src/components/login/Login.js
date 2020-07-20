@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import fairy from '../../asset/img/pairFairy.png';
-import { DefaultButton } from "../shared/Buttons";
+import { Link } from 'react-router-dom';
 
 function Login() {
 
@@ -22,6 +22,18 @@ function Login() {
           <input className="login-input login-password" placeholder="Password"/>
           <button className="login-btn">로그인</button>
         </div>
+        <footer>
+          <Link
+            exact
+            to={`/signUp`}
+            activeStyle={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+          >
+            Sign up
+          </Link>
+        </footer>
       </section>
     </main>
   )
