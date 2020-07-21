@@ -4,11 +4,13 @@ import './index.css';
 import App from './components/App';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/index';
 import * as serviceWorker from './serviceWorker';
+import createSagaMiddleware from 'redux-saga';
 
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 ReactDOM.render(
     <React.StrictMode>
