@@ -19,6 +19,7 @@ export function DefaultButton(props) {
       variant={variant}
       color={color}
       size={size}
+      fullWidth={fullWidth}
     >
       {text}
     </Button>
