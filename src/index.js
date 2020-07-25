@@ -8,9 +8,11 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/index';
 import * as serviceWorker from './serviceWorker';
 import createSagaMiddleware from 'redux-saga';
+import rootSaga from "./saga";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
     <React.StrictMode>
