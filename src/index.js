@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/index';
 import * as serviceWorker from './serviceWorker';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from "./saga";
+import rootSaga from "./store/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));

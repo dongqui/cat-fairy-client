@@ -13,7 +13,7 @@ function SignUp() {
   const dispatch = useDispatch();
 
   const submit = () => {
-    dispatch(signUpWithEmail({ email: email.value, password:password.value }));
+    dispatch(signUpWithEmail(email.value, password.value ));
   }
 
   return (
