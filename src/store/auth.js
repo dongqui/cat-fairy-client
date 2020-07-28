@@ -10,20 +10,20 @@ export function signUpWithEmail(email, password) {
   return action(SIGN_UP_WITH_EMAIL, { email, password })
 }
 
-function signUpSuccess(userCredential) {
-  return action(action(SIGN_UP_SUCCESS, { userCredential }));
+function signUpSuccess(user) {
+  return action(SIGN_UP_SUCCESS, { user });
 }
 
 function signUpFailed(error) {
-  return action(action(SIGN_UP_FAILED, { error }));
+  return action(SIGN_UP_FAILED, { error });
 }
 
-export function* createUserWithEmail(email, password) {
+export function* createUserWithEmail(email, password, userName) {
   try {
     const userCredential = yield call([FireAuth, FireAuth.createUserWithEmailAndPassword], email, password);
-    yield put(signUpSuccess(userCredential));
+    yield call([userCredential.user, userCredential.user.updateProfile], { displayName: userName });
+    yield put(signUpSuccess(userCredential, userCredential.user));
   } catch (error) {
-    console.log(error);
     yield put(signUpFailed(error));
   }
 }
@@ -31,11 +31,13 @@ export function* createUserWithEmail(email, password) {
 const initialState = {
   user: null,
 };
-export default function auth(state=initialState, action) {
+export default function auth(state=initialState, action={}) {
+  const { user } = action.payload || {};
   switch (action.type) {
     case SIGN_UP_SUCCESS:
       return {
         ...state,
+        user
       };
     case SIGN_UP_FAILED:
       return {};

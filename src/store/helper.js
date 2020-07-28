@@ -3,7 +3,9 @@ import { put, call } from "redux-saga/effects";
 export const action = (type, payload) => {
   return {
     type,
-    payload
+    payload: {
+      ...payload
+    }
   }
 }
 
