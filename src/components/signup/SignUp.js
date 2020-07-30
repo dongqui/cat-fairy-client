@@ -12,13 +12,13 @@ function SignUp() {
   const passwordToConfirm = useInput('');
   const dispatch = useDispatch();
 
-  const submit = () => {
+  const submit = (e) => {
     dispatch(signUpWithEmail(email.value, password.value ));
   }
 
   return (
     <Container maxWidth="sm">
-      <form className="sign-up-form">
+      <form className="sign-up-form" onSubmit={submit}>
         <TextField {...email} className="sign-up-input" fullWidth label="ID" type="text" variant="outlined"/>
         <TextField {...password} className="sign-up-input" fullWidth label="Password" type="password" variant="outlined"/>
         <TextField {...passwordToConfirm}

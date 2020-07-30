@@ -3,9 +3,20 @@ import './Login.css';
 import fairy from '../../asset/img/pairFairy.png';
 import { Link } from 'react-router-dom';
 import { DefaultButton } from '../shared/Buttons';
+import { useDispatch } from 'react-redux';
+import { loginWithEmail } from '../../store/auth';
+import { useInput } from '../../helper/hooks';
 
 function Login() {
 
+  const email= useInput('');
+  const password = useInput('');
+
+  const dispatch = useDispatch();
+
+  const submit = () => {
+    dispatch(loginWithEmail(email, password));
+  }
   return (
     <main className="login-container">
       <section className="login-left login-base">
@@ -20,9 +31,9 @@ function Login() {
         <div className="login-input-container">
           <form className="login-form">
             <h2>로그인</h2>
-            <input className="login-input login-email" placeholder="ID"/>
-            <input className="login-input login-password" placeholder="Password"/>
-            <DefaultButton text="로그인" variant="contained"  color="primary" fullWidth/>
+            <input {...email} className="login-input login-email" placeholder="ID"/>
+            <input {...password} className="login-input login-password" placeholder="Password"/>
+            <DefaultButton text="로그인" variant="contained"  color="primary" fullWidth onClick={submit}/>
           </form>
           <footer>
             <Link
