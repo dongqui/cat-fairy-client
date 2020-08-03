@@ -1,43 +1,14 @@
 import { call, put } from "redux-saga/effects";
-import { FireAuth } from "../firebase";
+import { FireAuth, githubAuthProvider } from "../firebase";
 import { action } from "./helper";
-import { push } from 'react-router-redux';
 
-export const SIGN_UP_WITH_EMAIL = 'SIGN_UP_WITH_EMAIL';
-export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
-export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
-
-export const LOGIN_WITH_EMAIL = 'LOGIN_WITH_EMAIL';
+export const LOGIN_WITH_GITHUB = 'LOGIN_WITH_GITHUB';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED  = 'LOGIN_FAILED';
 
-export function signUpWithEmail(email, password) {
-  return action(SIGN_UP_WITH_EMAIL, { email, password })
-}
 
-function signUpSuccess(user) {
-  return action(SIGN_UP_SUCCESS, { user });
-}
-
-function signUpFailed(error) {
-  return action(SIGN_UP_FAILED, { error });
-}
-
-export function* createUserWithEmail(email, password, userName) {
-  try {
-    const userCredential = yield call([FireAuth, FireAuth.createUserWithEmailAndPassword], email, password);
-    yield call([userCredential.user, userCredential.user.updateProfile], { displayName: userName });
-    yield put([
-      signUpSuccess(userCredential, userCredential.user),
-      push('/')
-    ]);
-  } catch (error) {
-    yield put(signUpFailed(error));
-  }
-}
-
-export function loginWithEmail(email, password) {
-  return action(LOGIN_WITH_EMAIL, { email, password })
+export function loginWithGithub(email, password) {
+  return action(LOGIN_WITH_GITHUB, { email, password })
 }
 
 function loginSuccess(user) {
@@ -48,13 +19,11 @@ function loginFailed(error) {
   return action(LOGIN_FAILED, { error });
 }
 
-export function* signInWithEmail(email, password) {
+export function* signInWithRedirect() {
   try {
-    const userCredential = yield call([FireAuth, FireAuth.signInWithEmailAndPassword], email, password);
-    yield put([
-      loginSuccess(userCredential, userCredential.user),
-      push('/')
-    ]);
+    //TODO: signInWithRedirect 사용
+    const user = yield call([FireAuth, FireAuth.signInWithPopup], githubAuthProvider);
+    yield put(loginSuccess(user));
   } catch (error) {
     yield put(loginFailed(error));
   }
@@ -66,13 +35,11 @@ const initialState = {
 export default function auth(state=initialState, action={}) {
   const { user } = action.payload || {};
   switch (action.type) {
-    case SIGN_UP_SUCCESS:
     case LOGIN_SUCCESS:
       return {
         ...state,
         user
       };
-    case SIGN_UP_FAILED:
     case LOGIN_FAILED:
       return {};
     default:
