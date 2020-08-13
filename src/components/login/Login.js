@@ -1,10 +1,28 @@
 import React, { useEffect } from 'react';
-import './Login.css';
-import fairy from '../../asset/img/pairFairy.png';
-import { DefaultButton } from '../shared/Buttons';
+import githubIcon from '../../asset/img/github.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginWithGithub } from '../../store/auth';
 import { Redirect } from 'react-router-dom';
+import { Button, Avatar, Box } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
+
+const GithubButton = withStyles({
+  root: {
+    backgroundColor: 'black',
+    border: 0,
+    color: 'white',
+    textAlign: 'right',
+    fontFamily: 'Cafe24Oneprettynight',
+    fontWeight: 900,
+    fontSize: '1.3rem',
+  },
+})(Button);
+
+const Container = withStyles({
+  root: {
+    paddingTop: '17%',
+  },
+})(Box)
 
 function Login() {
   const dispatch = useDispatch();
@@ -19,16 +37,14 @@ function Login() {
   })
   return (
     user ? <Redirect to='/'/> :
-    <main className="login-container">
-      <section className="login-left login-base">
-        <img className="img-fairy" src={fairy} />
-      </section>
-      <section className="login-right login-base">
-        <div className="login-input-container">
-          <DefaultButton text="로그인" variant="contained"  color="primary" fullWidth onClick={submit}/>
-        </div>
-      </section>
-    </main>
+    <Container component="main">
+      <GithubButton
+        variant="contained"
+        startIcon={<Avatar src={githubIcon}/>}
+        onClick={submit}>
+        Sign Up With Github
+      </GithubButton>
+    </Container>
   )
 }
 
