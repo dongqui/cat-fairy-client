@@ -32,9 +32,6 @@ function Login() {
     dispatch(loginWithGithub());
   }
 
-  useEffect(() => {
-    console.log(user);
-  })
   return (
     user ? <Redirect to='/'/> :
     <Container component="main">
@@ -47,7 +44,5 @@ function Login() {
     </Container>
   )
 }
-
-
 
 export default Login;
