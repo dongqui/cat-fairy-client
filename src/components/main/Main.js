@@ -1,23 +1,20 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
+import SelectCat from './SelectCat';
 import background from '../../asset/img/배경.png'
 
-const useStyles = makeStyles({
-  root: {
-    background: `url(${background}) no-repeat`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    width: '100%',
-    height: '100vh',
-    margin: '0 auto',
-  },
-});
-function Main() {
-  const classes = useStyles();
-  return(
-    <div className={classes.root}>
+const Background = styled.main`
+  background: url(${background});
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100vh;
+`
 
-    </div>
+function Main() {
+  return(
+    <Background>
+      <SelectCat/>
+    </Background>
   )
 }
 
