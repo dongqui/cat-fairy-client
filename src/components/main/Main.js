@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import SelectCat from './SelectCat';
-import background from '../../asset/img/배경.png'
-
-const Background = styled.main`
-  background: url(${background});
-  background-size: 100% 100%;
-  width: 100%;
-  height: 100vh;
-`
+import backgroundMain from '../../asset/img/배경.png'
+import { Background } from '../shared/index';
 
 function Main() {
   return(
-    <Background>
+    <Background url={backgroundMain}>
       <SelectCat/>
     </Background>
   )
