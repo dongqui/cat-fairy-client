@@ -1,31 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginWithGithub } from '../../store/auth';
+import { Redirect } from 'react-router-dom';
 import backgroundIntro from '../../asset/img/background-intro.png'
 import { Background } from '../shared/index';
+import S from './styles';
 
-const fadeIn = `
-  from { opacity: 0 };
-  to { opacity: 0.7 };
-`;
-
-const Title = styled.div`
-  position: absolute;
-  font-size: 5rem;
-  top: 35%;
-  left: 20%;
-`
-const TouchStart = styled.div`
-  position: absolute;
-  font-size: 3rem;
-  top: 50%;
-  left: 30%;
-  animation: ${fadeIn} 1s linear;
-`
 function Intro() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth);
+  const submit = () => {
+    dispatch(loginWithGithub());
+  }
   return (
+    user ? <Redirect to='/'/> :
     <Background url={backgroundIntro}>
-      <Title>이것은 제목이다</Title>
-      <TouchStart>Touch Start</TouchStart>
+      <S.Container>
+        <S.Title>이것은 제목이다</S.Title>
+        <S.IntroMenuList>
+          <S.IntroMenuItem
+            onClick={submit}
+          >
+            Github으로 게임시작
+          </S.IntroMenuItem>
+          <S.IntroMenuItem>도움말</S.IntroMenuItem>
+        </S.IntroMenuList>
+      </S.Container>
     </Background>
   )
 }
