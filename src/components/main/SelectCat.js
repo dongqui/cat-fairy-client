@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HandDrawnBorderDiv } from '../shared';
+import { HandDrawnBorder } from '../shared';
 import cheeseCat from '../../asset/img/치즈냥.png'
 import blackCat from '../../asset/img/깜장냥.png'
 import dottedCat from '../../asset/img/점냥이.png'
 import greyCat from '../../asset/img/회색냥.png'
 import whiteCate from '../../asset/img/흰냥.png'
 
-const Container = styled(HandDrawnBorderDiv)`
+const Container = styled.div`
+  ${HandDrawnBorder};
   width: 50%;
   background:white;
   display: flex;
