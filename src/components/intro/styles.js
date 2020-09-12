@@ -1,7 +1,6 @@
 import { HandDrawnBorder } from '../shared';
 import styled, { keyframes } from 'styled-components';
-import backgroundIntro from '../../asset/img/background-intro.png'
-import { Background } from '../shared/index';
+import { Link } from 'react-router-dom';
 
 const fadeIn = keyframes`  
   from { opacity: 0; }
@@ -34,9 +33,15 @@ const Container = styled.div`
   left: 15%;
 `
 
+const _Link = styled(Link)`
+  color: black;
+  text-decoration: none;
+`
+
 export default {
   Title,
   IntroMenuList,
   IntroMenuItem,
-  Container
+  Container,
+  _Link
 }
