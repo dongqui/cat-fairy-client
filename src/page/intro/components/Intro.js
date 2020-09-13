@@ -1,12 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import backgroundIntro from '../../../asset/img/background-intro.png'
 import { Background } from '../../../common';
 import S from '../components/styles';
 
-function Intro() {
-  const { user } = useSelector(state => state.auth);
-
+function _Intro({ user }) {
   return (
     <Background url={backgroundIntro}>
       <S.Container>
@@ -24,4 +21,4 @@ function Intro() {
   )
 }
 
-export default Intro;
+export default _Intro;

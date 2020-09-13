@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithGithub } from '../../../store/auth';
 
-function LoginBridge() {
+function _LoginBridge() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth);
 
@@ -21,4 +21,4 @@ function LoginBridge() {
   )
 }
 
-export default LoginBridge;
+export default _LoginBridge;
