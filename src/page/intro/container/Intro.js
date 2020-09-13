@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import backgroundIntro from '../asset/img/background-intro.png'
-import { Background } from '../components/shared';
-import S from '../components/intro/styles';
+import backgroundIntro from '../../../asset/img/background-intro.png'
+import { Background } from '../../../common';
+import S from '../components/styles';
 
 function Intro() {
   const { user } = useSelector(state => state.auth);

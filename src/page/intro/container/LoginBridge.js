@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginWithGithub } from '../../store/auth';
+import { loginWithGithub } from '../../../store/auth';
 
 function LoginBridge() {
   const dispatch = useDispatch();

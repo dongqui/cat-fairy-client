@@ -1,4 +1,4 @@
-import { HandDrawnBorder } from '../shared';
+import { HandDrawnBorder } from '../../../common';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 

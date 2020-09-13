@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import SelectCat from '../components/main/SelectCat';
-import SideMenu from '../components/main/SideMenu';
-import backgroundMain from '../asset/img/배경.png'
-import { Background } from '../components/shared';
+import SelectCat from '../components/SelectCat';
+import SideMenu from '../components/SideBar';
+import backgroundMain from '../../../asset/img/배경.png'
+import { Background } from '../../../common';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Main() {
