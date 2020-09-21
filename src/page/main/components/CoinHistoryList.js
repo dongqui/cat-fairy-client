@@ -17,3 +17,5 @@ function CoinHistoryList() {
     </S.CoinHistoryContainer>
   )
 }
+
+export default CoinHistoryList;

@@ -1,13 +1,19 @@
-import React from 'react';
-import CoinHistoryList from '../components/CoinHistoryList';
+import React, {useEffect} from 'react';
+import CoinHistory from '../components/CoinHistory';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCommitHistory } from '../../../store/mian';
 
-function CoinHistory_() {
+function CoinHistoryContainer() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
 
-
+  useEffect(() => {
+    user && dispatch(getCommitHistory(user?.additionalUserInfo?.username));
+  }, [dispatch, user]);
 
   return (
-    <CoinHistoryList/>
+    <CoinHistory/>
   )
 }
 
-export default CoinHistory_;
+export default CoinHistoryContainer;

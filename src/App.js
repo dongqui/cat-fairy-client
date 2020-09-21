@@ -1,6 +1,6 @@
 import React from 'react';
 import _Intro from './page/intro/container/_Intro';
-import _Main from './page/main/container/_Main';
+import _Main from './page/main/container/MainContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import _LoginBridge from './page/intro/container/_LoginBridge';
 

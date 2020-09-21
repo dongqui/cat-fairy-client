@@ -15,8 +15,8 @@ export function toggleSelectCat() {
 export function toggleSideBar() {
   return action(TOGGLE_SIDE_BAR);
 }
-export function getCommitHistory() {
-  return action(GET_COMMIT_HISTORY);
+export function getCommitHistory(username) {
+  return action(GET_COMMIT_HISTORY, { username });
 }
 export function getCommitHistoryRequest() {
   return action(GET_COMMIT_HISTORY_REQUEST);
@@ -29,10 +29,10 @@ export function getCommitHistoryFailed() {
 }
 
 
-export function* _getCommitHistory() {
+export function* _getCommitHistory(username) {
   try {
     yield put(getCommitHistoryRequest());
-    const commitHistory = yield call(getCommitHistoryApi, );
+    const commitHistory = yield call(getCommitHistoryApi, username);
     yield put(getCommitHistorySuccess(commitHistory));
   } catch (error) {
     yield put(getCommitHistoryFailed(error));

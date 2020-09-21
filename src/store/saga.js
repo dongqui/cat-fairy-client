@@ -11,13 +11,14 @@ function *watchGithubLogin() {
 
 function *watchGetCommitHistory() {
   while (true) {
-    yield take(GET_COMMIT_HISTORY);
-    yield call(_getCommitHistory)
+    const { payload } = yield take(GET_COMMIT_HISTORY);
+    yield call(_getCommitHistory, payload.username)
   }
 }
 
 export default function* rootSaga() {
   yield all([
     fork(watchGithubLogin),
+    fork(watchGetCommitHistory),
   ]);
 }

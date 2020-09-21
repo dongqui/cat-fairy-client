@@ -7,8 +7,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED  = 'LOGIN_FAILED';
 
 
-export function loginWithGithub(email, password) {
-  return action(LOGIN_WITH_GITHUB, { email, password })
+export function loginWithGithub() {
+  return action(LOGIN_WITH_GITHUB)
 }
 
 function loginSuccess(user) {
