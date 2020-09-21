@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Main from '../components/Main';
 import { useDispatch, useSelector } from 'react-redux';
 
-function _Main() {
+function Main_() {
 
   const dispatch = useDispatch();
   const { isSelectCatOpen } = useSelector(state => state.main);
@@ -17,4 +17,4 @@ function _Main() {
   )
 }
 
-export default _Main;
+export default Main_;
