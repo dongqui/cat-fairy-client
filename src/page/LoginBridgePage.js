@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginWithGithub } from '../../../store/auth';
+import { loginWithGithub } from '../store/auth';
 
-function _LoginBridge() {
+export function LoginBridgePage() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth);
 
@@ -20,5 +20,3 @@ function _LoginBridge() {
     </div>
   )
 }
-
-export default _LoginBridge;

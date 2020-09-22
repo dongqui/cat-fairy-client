@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HandDrawnBorder } from '../../../common/index';
+import { HandDrawnBorder } from '../common';
 import CoinHistoryItem from './CoinHistoryItem';
 
 const S = {};

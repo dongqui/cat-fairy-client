@@ -1,7 +1,7 @@
 import React from 'react';
-import backgroundIntro from '../../../asset/img/background-intro.png'
-import { Background } from '../../../common';
-import S from '../components/styles';
+import backgroundIntro from '../asset/img/background-intro.png'
+import { Background } from '../common';
+import S from './introstyles';
 
 function _Intro({ user }) {
   return (

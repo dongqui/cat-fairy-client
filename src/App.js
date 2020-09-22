@@ -1,16 +1,14 @@
 import React from 'react';
-import _Intro from './page/intro/container/_Intro';
-import _Main from './page/main/container/MainContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import _LoginBridge from './page/intro/container/_LoginBridge';
+import { LoginBridgePage, MainPage, IntroPage } from './page/index';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Route exact path='/loginBridge' component={_LoginBridge}/>
-        <Route exact path='/main' component={_Main}/>
-        <Route exact path='/' component={_Intro}/>
+        <Route exact path='/loginBridge' component={LoginBridgePage}/>
+        <Route exact path='/main' component={MainPage}/>
+        <Route exact path='/' component={IntroPage}/>
       </Router>
     </div>
   );

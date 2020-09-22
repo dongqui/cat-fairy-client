@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import CoinHistory from '../components/CoinHistory';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCommitHistory } from '../../../store/mian';
+import { getCommitHistory } from '../store/mian';
 
-function CoinHistoryContainer() {
+export function CoinHistoryContainer() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth)
 
@@ -15,5 +15,3 @@ function CoinHistoryContainer() {
     <CoinHistory/>
   )
 }
-
-export default CoinHistoryContainer;
