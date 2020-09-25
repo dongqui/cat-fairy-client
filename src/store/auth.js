@@ -21,16 +21,15 @@ function loginFailed(error) {
 
 export function* signInWithRedirect() {
   try {
-    //TODO: signInWithRedirect 사용
-    const user = yield call([FireAuth, FireAuth.signInWithPopup], githubAuthProvider);
-    yield put(loginSuccess(user));
+    yield call([FireAuth, FireAuth.signInWithRedirect], githubAuthProvider);
   } catch (error) {
     yield put(loginFailed(error));
   }
 }
 
 const initialState = {
-  user: null,
+  fireAuth: FireAuth,
+  user: FireAuth.currentUser,
 };
 export default function auth(state=initialState, action={}) {
   const { user } = action.payload || {};
