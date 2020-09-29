@@ -1,20 +1,28 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { loginWithGithub } from '../store/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginWithGithub, loginSuccess } from '../store/auth';
+import { FireAuth } from '../firebase'
 
 export function LoginBridgePage() {
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.auth);
+  const user = useSelector(state => state.auth.user);
 
   useEffect(() => {
-    if (!user) {
-      dispatch(loginWithGithub());
+    const getRedirectResultOrLoginRequest = async () => {
+      const redirectResult = await FireAuth.getRedirectResult();
+      if (redirectResult) {
+        const user = redirectResult.user;
+        dispatch(loginSuccess(user));
+      } else {
+        dispatch(loginWithGithub());
+      }
     }
-  }, [user, dispatch])
+
+    getRedirectResultOrLoginRequest();
+  }, [dispatch])
 
   return (
-    user ? <Redirect to='/main'/> :
     <div>
       Loading...
     </div>

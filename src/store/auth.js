@@ -11,7 +11,8 @@ export function loginWithGithub() {
   return action(LOGIN_WITH_GITHUB)
 }
 
-function loginSuccess(user) {
+export function loginSuccess(user) {
+  console.log(user);
   return action(LOGIN_SUCCESS, { user });
 }
 
@@ -28,7 +29,6 @@ export function* signInWithRedirect() {
 }
 
 const initialState = {
-  fireAuth: FireAuth,
   user: FireAuth.currentUser,
 };
 export default function auth(state=initialState, action={}) {
