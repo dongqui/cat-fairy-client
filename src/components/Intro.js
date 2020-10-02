@@ -1,9 +1,10 @@
 import React from 'react';
 import backgroundIntro from '../asset/img/background-intro.png'
-import { Background } from '../common';
-import S from './introstyles';
+import { Background, HandDrawnBorder } from '../common';
+import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 
-function _Intro({ user }) {
+function Intro({ user }) {
   return (
     <Background url={backgroundIntro}>
       <S.Container>
@@ -21,4 +22,48 @@ function _Intro({ user }) {
   )
 }
 
-export default _Intro;
+const fadeIn = keyframes`  
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const Title = styled.h2`
+  margin: 0;
+  padding-top: 10px;
+  font-size: 3rem;
+  animation: ${fadeIn} 2s linear;
+`
+
+const IntroMenuList = styled.ul`
+  padding: 5px 50px;
+`
+const IntroMenuItem = styled.li`
+  ${HandDrawnBorder};
+  margin: 15px auto 0 auto;
+  list-style: none;
+  border-width: 3px;
+  width: 250px;
+  padding: 15px;
+  cursor: pointer;
+`
+const Container = styled.div`
+  width: 50%;
+  position: absolute;
+  top: 30%;
+  left: 15%;
+`
+
+const _Link = styled(Link)`
+  color: black;
+  text-decoration: none;
+`
+
+const S = {
+  Title,
+  IntroMenuList,
+  IntroMenuItem,
+  Container,
+  _Link,
+};
+
+export default Intro;
