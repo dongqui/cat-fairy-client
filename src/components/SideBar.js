@@ -39,8 +39,6 @@ const SidebarItemList = styled.ul`
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 0;
-  padding: 0;
 `;
 
 const SidebarItem = styled.li`

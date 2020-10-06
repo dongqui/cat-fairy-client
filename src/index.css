@@ -23,3 +23,12 @@ code {
   font-weight: normal;
   font-style: normal;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
