@@ -9,7 +9,7 @@ export function CommitHistoryContainer() {
   const { commitHistory } = useSelector(state => state.main);
 
   useEffect(() => {
-    user && dispatch(getCommitHistory(user?.username));
+    user && dispatch(getCommitHistory(user?.uid));
   }, [dispatch, user]);
 
   return (

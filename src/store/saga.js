@@ -12,7 +12,7 @@ function *watchGithubLogin() {
 function *watchGetCommitHistory() {
   while (true) {
     const { payload } = yield take(GET_COMMIT_HISTORY);
-    yield call(_getCommitHistory, payload.username)
+    yield call(_getCommitHistory, payload.uid)
   }
 }
 
