@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginWithGithub, loginSuccess } from '../store/auth';
-import { FireAuth } from '../firebase'
+import { fireAuth } from '../firebase'
 import { Maybe } from '../components/Maybe';
 
 export function LoginBridgePage() {
@@ -11,7 +11,7 @@ export function LoginBridgePage() {
 
   useEffect(() => {
     const getRedirectResultOrLoginRequest = async () => {
-      const redirectResult = await FireAuth.getRedirectResult();
+      const redirectResult = await fireAuth.getRedirectResult();
       if (redirectResult.additionalUserInfo) {
         dispatch(loginSuccess(
           {
