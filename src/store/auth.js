@@ -1,5 +1,5 @@
 import { call, put } from "redux-saga/effects";
-import { FireAuth, githubAuthProvider } from "../firebase";
+import { fireAuth, githubAuthProvider } from "../firebase";
 import { action } from "./helper";
 
 export const LOGIN_WITH_GITHUB = 'LOGIN_WITH_GITHUB';
@@ -12,7 +12,6 @@ export function loginWithGithub() {
 }
 
 export function loginSuccess(user) {
-  console.log(user);
   return action(LOGIN_SUCCESS, { user });
 }
 
@@ -22,14 +21,14 @@ function loginFailed(error) {
 
 export function* signInWithRedirect() {
   try {
-    yield call([FireAuth, FireAuth.signInWithRedirect], githubAuthProvider);
+    yield call([fireAuth, fireAuth.signInWithRedirect], githubAuthProvider);
   } catch (error) {
     yield put(loginFailed(error));
   }
 }
 
 const initialState = {
-  user: FireAuth.currentUser,
+  user: null,
 };
 export default function auth(state=initialState, action={}) {
   const { user } = action.payload || {};
