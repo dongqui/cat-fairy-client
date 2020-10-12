@@ -1,22 +1,17 @@
 import { action } from "./helper";
-import { call, put } from 'redux-saga/effects';
-import { getCommitHistoryApi } from '../api/commitHistory';
 
-export const TOGGLE_SELECT_CAT = 'TOGGLE_SELECT_CAT';
-export const TOGGLE_SIDE_BAR = 'OPEN_SIDE_BAR';
+export const SELECT_SIDEBAR_ITEM = 'SELECT_SIDEBAR_ITEM';
 export const GET_COMMIT_HISTORY = 'GET_COMMIT_HISTORY';
 export const GET_COMMIT_HISTORY_REQUEST = 'GET_COMMIT_HISTORY_REQUEST';
 export const GET_COMMIT_HISTORY_SUCCESS = 'GET_COMMIT_HISTORY_SUCCESS';
 export const GET_COMMIT_HISTORY_FAILED = 'GET_COMMIT_HISTORY_FAILED';
 
-export function toggleSelectCat() {
-  return action(TOGGLE_SELECT_CAT);
+export function selectedSidebarItem(sidebarItem) {
+  return action(SELECT_SIDEBAR_ITEM, { sidebarItem });
 }
-export function toggleSideBar() {
-  return action(TOGGLE_SIDE_BAR);
-}
-export function getCommitHistory(username) {
-  return action(GET_COMMIT_HISTORY, { username });
+
+export function getCommitHistory(uid) {
+  return action(GET_COMMIT_HISTORY, { uid });
 }
 export function getCommitHistoryRequest() {
   return action(GET_COMMIT_HISTORY_REQUEST);
@@ -28,36 +23,21 @@ export function getCommitHistoryFailed() {
   return action (GET_COMMIT_HISTORY_FAILED);
 }
 
-
-export function* _getCommitHistory(username) {
-  try {
-    yield put(getCommitHistoryRequest());
-    const commitHistory = yield call(getCommitHistoryApi, username);
-    yield put(getCommitHistorySuccess(commitHistory));
-  } catch (error) {
-    yield put(getCommitHistoryFailed(error));
-  }
-}
-
 const initialState = {
   isSelectCatOpen: false,
   isSideBarOpen: false,
   loadingCommitHistory: false,
   commitHistory: [],
+  selectedSidebarItem: '',
 };
 
 export default function main(state=initialState, action={}) {
   switch (action.type) {
-    case TOGGLE_SELECT_CAT:
+    case SELECT_SIDEBAR_ITEM:
       return {
         ...state,
-        isSelectCatOpen: !state.isSelectCatOpen,
-      };
-    case TOGGLE_SIDE_BAR:
-      return {
-        ...state,
-        isSelectCatOpen: !state.isSelectCatOpen,
-      };
+        selectedSidebarItem: action.payload.selectedSidebarItem,
+      }
     case GET_COMMIT_HISTORY_REQUEST:
       return {
         ...state,
