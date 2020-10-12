@@ -1,8 +1,12 @@
 import React from 'react';
-import { MainContainer } from '../container/index';
+import {CommitHistoryContainer, MainContainer, SelectCatContainer} from '../container/index';
 
 export function MainPage() {
   return (
-    <MainContainer/>
+    <>
+      <MainContainer/>
+      <SelectCatContainer/>
+      <CommitHistoryContainer/>
+    </>
   )
 }
