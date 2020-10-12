@@ -16,10 +16,13 @@ function CommitHistory() {
 
 const CommitHistoryModal = styled(Modal)`
   width: 30%;
+  height: 500px;
 `;
 
 const CommitHistoryModalHeader = styled.header`
   border-bottom: 2px gray solid;
+  padding: 12px 20px;
+  font-family: 'Cafe24Oneprettynight', 'sans-serif';
 `;
 
 const S = {

@@ -19,11 +19,11 @@ function CommitHistoryItem() {
 
 const CommitHistoryItemWrapper = styled.div`
   display: flex;
+  padding: 12px 20px;
 `;
 
 const CommitHistoryDate = styled.div`
   flex: 7;
-  text-align: center;
 `;
 
 const CommitHistorySequence = styled.div`
@@ -33,7 +33,7 @@ const CommitHistorySequence = styled.div`
 
 const CommitHistoryReward = styled.div`
   flex: 3;
-  text-align: center;
+  text-align: right;
 `;
 
 const S = {

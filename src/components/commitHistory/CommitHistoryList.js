@@ -6,7 +6,7 @@ function CommitHistoryList({ commitHistories }) {
   return(
     <S.CommitHistoryWrapper>
       {
-        commitHistories||[1].map(commitHistory => <CommitHistoryItem commitHistory={commitHistory}/>)
+        commitHistories||[1].map(commitHistory => <CommitHistoryItem key={'a'} commitHistory={commitHistory}/>)
       }
     </S.CommitHistoryWrapper>
   )
