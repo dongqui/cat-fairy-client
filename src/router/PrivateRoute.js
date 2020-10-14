@@ -5,23 +5,18 @@ import {
 } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-const PrivateRouter = ({ Page, location, exact, path }) => {
+const PrivateRouter = ({ Page, exact, path }) => {
   const user = useSelector(state => state.auth.user);
   return (
     <Route
       exact={exact}
       path={path}
-      render={props => {
+      render={() => {
         if (user) {
           return <Page/>;
         } else {
           return (
-            <Redirect
-              to={{
-                pathname: "/intro",
-                state: { from: location }
-              }}
-            />
+            <Redirect to='/'/>
           );
         }
       }}

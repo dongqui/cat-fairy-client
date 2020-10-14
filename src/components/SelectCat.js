@@ -1,25 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HandDrawnBorder } from '../common';
+import { Modal } from '../common';
 import cheeseCat from '../asset/img/치즈냥.png'
 import blackCat from '../asset/img/깜장냥.png'
 import dottedCat from '../asset/img/점냥이.png'
 import greyCat from '../asset/img/회색냥.png'
 import whiteCate from '../asset/img/흰냥.png'
 
-const Container = styled.div`
-  ${HandDrawnBorder};
-  width: 50%;
-  background:white;
+function SelectCat() {
+  return (
+    <S.SelectCatModal>
+      <S.CatImgWrapper><img alt="cheese" src={cheeseCat}/></S.CatImgWrapper>
+      <S.CatImgWrapper><img alt="black" src={blackCat}/></S.CatImgWrapper>
+      <S.CatImgWrapper><img alt="dotted" src={dottedCat}/></S.CatImgWrapper>
+      <S.CatImgWrapper><img alt="grey" src={greyCat}/></S.CatImgWrapper>
+      <S.CatImgWrapper><img alt="white" src={whiteCate}/></S.CatImgWrapper>
+    </S.SelectCatModal>
+  )
+}
+
+const SelectCatModal = styled(Modal)`
   display: flex;
   flex-wrap: wrap;
   font-size:2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `
-const Cat = styled.div`
+const CatImgWrapper = styled.div`
   flex-basis: 33%;
   
   > img {
@@ -27,16 +32,9 @@ const Cat = styled.div`
   }
 `
 
-function SelectCat() {
-  return (
-    <Container>
-      <Cat><img alt="cheese" src={cheeseCat}/></Cat>
-      <Cat><img alt="black" src={blackCat}/></Cat>
-      <Cat><img alt="dotted" src={dottedCat}/></Cat>
-      <Cat><img alt="grey" src={greyCat}/></Cat>
-      <Cat><img alt="white" src={whiteCate}/></Cat>
-    </Container>
-  )
+const S = {
+  SelectCatModal,
+  CatImgWrapper,
 }
 
 export default SelectCat;
