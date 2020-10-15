@@ -17,23 +17,24 @@ function CommitHistoryItem() {
   )
 }
 
-const CommitHistoryItemWrapper = styled.div`
+export const CommitHistoryItemWrapper = styled.div`
   display: flex;
   padding: 12px 20px;
 `;
 
-const CommitHistoryDate = styled.div`
-  flex: 7;
-`;
-
-const CommitHistorySequence = styled.div`
-  flex: 2;
+export const CommitHistoryDate = styled.div`
+  flex: 8;
   text-align: center;
 `;
 
-const CommitHistoryReward = styled.div`
+export const CommitHistorySequence = styled.div`
   flex: 3;
-  text-align: right;
+  text-align: center;
+`;
+
+export const CommitHistoryReward = styled.div`
+  flex: 3;
+  text-align: center;
 `;
 
 const S = {
