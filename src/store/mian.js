@@ -55,6 +55,6 @@ export default function main(state=initialState, action={}) {
         loadingCommitHistory: false,
       };
     default:
-      return initialState;
+      return state;
   }
 }

@@ -41,6 +41,6 @@ export default function auth(state=initialState, action={}) {
     case LOGIN_FAILED:
       return {};
     default:
-      return initialState;
+      return state;
   }
 }
