@@ -5,6 +5,7 @@ export const GET_COMMIT_HISTORY = 'GET_COMMIT_HISTORY';
 export const GET_COMMIT_HISTORY_REQUEST = 'GET_COMMIT_HISTORY_REQUEST';
 export const GET_COMMIT_HISTORY_SUCCESS = 'GET_COMMIT_HISTORY_SUCCESS';
 export const GET_COMMIT_HISTORY_FAILED = 'GET_COMMIT_HISTORY_FAILED';
+export const SET_OPEN_COMMIT_HISTORY = 'SET_OPEN_COMMIT_HISTORY';
 
 export function selectedSidebarItem(sidebarItem) {
   return action(SELECT_SIDEBAR_ITEM, { sidebarItem });
@@ -22,12 +23,16 @@ export function getCommitHistorySuccess(commitHistory) {
 export function getCommitHistoryFailed() {
   return action (GET_COMMIT_HISTORY_FAILED);
 }
+export function setOpenCommitHistory(isOpen) {
+  return action(SET_OPEN_COMMIT_HISTORY, isOpen);
+}
 
 const initialState = {
+  isCommitHistoryOpen: false,
   isSelectCatOpen: false,
-  isSideBarOpen: false,
+  isSideBarOpen: true,
   loadingCommitHistory: false,
-  commitHistory: [],
+  commitHistories: [],
   selectedSidebarItem: '',
 };
 
@@ -54,6 +59,11 @@ export default function main(state=initialState, action={}) {
         ...state,
         loadingCommitHistory: false,
       };
+    case SET_OPEN_COMMIT_HISTORY:
+      return {
+        ...state,
+        isCommitHistoryOpen: action.payload.isOpen,
+      }
     default:
       return state;
   }

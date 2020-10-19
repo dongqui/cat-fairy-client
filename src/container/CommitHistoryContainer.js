@@ -1,18 +1,23 @@
 import React, {useEffect} from 'react';
 import CommitHistory from '../components/commitHistory/CommitHistory';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCommitHistory } from '../store/mian';
+import { getCommitHistory, setOpenCommitHistory } from '../store/mian';
+import {Maybe} from '../components/Maybe';
 
 export function CommitHistoryContainer() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth);
-  const { commitHistory } = useSelector(state => state.main);
+  const { commitHistories, isCommitHistoryOpen } = useSelector(state => state.main);
+
+  const closeCommitHistory = () => dispatch(setOpenCommitHistory(false));
 
   useEffect(() => {
-    user && dispatch(getCommitHistory(user?.uid));
+    dispatch(getCommitHistory(user?.uid));
   }, [dispatch, user]);
 
   return (
-    <CommitHistory commitHistory={commitHistory}/>
+    <Maybe test={isCommitHistoryOpen}>
+      <CommitHistory commitHistory={commitHistories} closeCommitHistory={closeCommitHistory}/>
+    </Maybe>
   )
 }
