@@ -8,13 +8,25 @@ import greyCat from '../asset/img/회색냥.png'
 import whiteCate from '../asset/img/흰냥.png'
 
 function SelectCat() {
+
+  const cats = [
+    {src: cheeseCat, alt: 'cheeseCat' },
+    {src: blackCat, alt: 'blackCat' },
+    {src: dottedCat, alt: 'dottedCat' },
+    {src: greyCat, alt: 'greyCat' },
+    {src: whiteCate, alt: 'whiteCate' },
+  ]
+
   return (
     <S.SelectCatModal>
-      <S.CatImgWrapper><img alt="cheese" src={cheeseCat}/></S.CatImgWrapper>
-      <S.CatImgWrapper><img alt="black" src={blackCat}/></S.CatImgWrapper>
-      <S.CatImgWrapper><img alt="dotted" src={dottedCat}/></S.CatImgWrapper>
-      <S.CatImgWrapper><img alt="grey" src={greyCat}/></S.CatImgWrapper>
-      <S.CatImgWrapper><img alt="white" src={whiteCate}/></S.CatImgWrapper>
+      {
+        cats.map(({ src, alt}) => (
+          <S.CatImgWrapper>
+            <input type="radio" name="test" value="big"/>
+            <img alt={alt} src={src}/>
+          </S.CatImgWrapper>
+        ))
+      }
     </S.SelectCatModal>
   )
 }
@@ -22,13 +34,20 @@ function SelectCat() {
 const SelectCatModal = styled(Modal)`
   display: flex;
   flex-wrap: wrap;
-  font-size:2rem;
 `
-const CatImgWrapper = styled.div`
+const CatImgWrapper = styled.label`
   flex-basis: 33%;
-  
   > img {
     width: 100%;
+  }
+
+  &:hover {
+    border-left: solid 1px lightgray;
+    box-shadow: 8px 5px 5px 5px grey;
+    border-radius: inherit;
+    > img {
+      width: 110%;
+    }
   }
 `
 
