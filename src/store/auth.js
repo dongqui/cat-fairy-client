@@ -6,18 +6,9 @@ export const LOGIN_WITH_GITHUB = 'LOGIN_WITH_GITHUB';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED  = 'LOGIN_FAILED';
 
-
-export function loginWithGithub() {
-  return action(LOGIN_WITH_GITHUB)
-}
-
-export function loginSuccess(user) {
-  return action(LOGIN_SUCCESS, { user });
-}
-
-function loginFailed(error) {
-  return action(LOGIN_FAILED, { error });
-}
+export const loginWithGithub = () => action(LOGIN_WITH_GITHUB);
+export const loginSuccess= (user) => action(LOGIN_SUCCESS, { user });
+export const loginFailed = (error) => action(LOGIN_FAILED, { error });
 
 export function* signInWithRedirect() {
   try {
