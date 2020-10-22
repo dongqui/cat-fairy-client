@@ -7,6 +7,11 @@ export const GET_COMMIT_HISTORY_SUCCESS = 'GET_COMMIT_HISTORY_SUCCESS';
 export const GET_COMMIT_HISTORY_FAILED = 'GET_COMMIT_HISTORY_FAILED';
 export const SET_OPEN_COMMIT_HISTORY = 'SET_OPEN_COMMIT_HISTORY';
 
+export const SELECT_CAT = 'SELECT_CAT';
+export const SELECT_CAT_REQUEST = 'SELECT_CAT_REQUEST';
+export const SELECT_CAT_SUCCESS = 'SELECT_CAT_SUCCESS';
+export const SELECT_CAT_FAILED = 'SELECT_CAT_FAILED';
+
 export function selectedSidebarItem(sidebarItem) {
   return action(SELECT_SIDEBAR_ITEM, { sidebarItem });
 }
@@ -18,22 +23,28 @@ export function getCommitHistoryRequest() {
   return action(GET_COMMIT_HISTORY_REQUEST);
 }
 export function getCommitHistorySuccess(commitHistory) {
-  return action(GET_COMMIT_HISTORY_SUCCESS, commitHistory)
+  return action(GET_COMMIT_HISTORY_SUCCESS, { commitHistory })
 }
 export function getCommitHistoryFailed() {
   return action (GET_COMMIT_HISTORY_FAILED);
 }
-export function setOpenCommitHistory(isOpen) {
-  return action(SET_OPEN_COMMIT_HISTORY, isOpen);
+export function setOpenCommitHistory(isCommitHistoryOpen) {
+  return action(SET_OPEN_COMMIT_HISTORY, { isCommitHistoryOpen });
 }
+export const selectCat = (catType) => action(SELECT_CAT, { catType });
+export const selectCatRequest = () => action(SELECT_CAT_REQUEST);
+export const selectCatSuccess = (catType) => action(SELECT_CAT_SUCCESS, { catType });
+export const selectCatFailed = () => action(SELECT_CAT_FAILED);
 
 const initialState = {
   isCommitHistoryOpen: false,
   isSelectCatOpen: false,
   isSideBarOpen: true,
-  loadingCommitHistory: false,
   commitHistories: [],
   selectedSidebarItem: '',
+  catType: null,
+  loadingCommitHistory: false,
+  loadingSelectCat: false,
 };
 
 export default function main(state=initialState, action={}) {
@@ -62,8 +73,20 @@ export default function main(state=initialState, action={}) {
     case SET_OPEN_COMMIT_HISTORY:
       return {
         ...state,
-        isCommitHistoryOpen: action.payload.isOpen,
+        isCommitHistoryOpen: action.payload.isCommitHistoryOpen,
       }
+    case SELECT_CAT_REQUEST: {
+      return {
+        ...state,
+        loadingSelectCat: false,
+      }
+    }
+    case SELECT_CAT_SUCCESS: {
+      return {
+        ...state,
+        catType: action.payload.catType,
+      }
+    }
     default:
       return state;
   }

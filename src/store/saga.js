@@ -4,9 +4,13 @@ import {
   GET_COMMIT_HISTORY,
   getCommitHistoryRequest,
   getCommitHistorySuccess,
-  getCommitHistoryFailed
+  getCommitHistoryFailed,
+  SELECT_CAT,
+  selectCatRequest,
+  selectCatSuccess,
+  selectCatFailed,
 } from './mian';
-import { getCommitHistoryApi } from '../api/commitHistory';
+import { getCommitHistoryApi,  selectCatApi } from '../api';
 
 function *watchGithubLogin() {
   while (true) {
@@ -28,9 +32,23 @@ function *watchGetCommitHistory() {
   }
 }
 
+function *watchSelectCat() {
+  while (true) {
+    const { payload } = yield take(SELECT_CAT);
+    try {
+      yield put(selectCatRequest(payload.catType, payload.uid));
+      yield call(selectCatApi, payload.catType, payload.uid);
+      yield put(selectCatSuccess(payload.catType));
+    } catch (error) {
+      yield put(selectCatFailed(error));
+    }
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     watchGithubLogin(),
     watchGetCommitHistory(),
+    watchSelectCat(),
   ]);
 }
