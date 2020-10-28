@@ -26,3 +26,12 @@ export const Modal = styled.div`
   transform: translate(-50%, -50%);
   width: 50%;
 `
+
+export const SpeechBalloon = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: ${props => props.top ? props.top : ''}px;
+  right: ${props => props.right ? props.right : ''}px;
+  bottom: ${props => props.bottom ? props.bottom : ''}px;
+  left: ${props => props.left ? props.left : ''}px;
+`;

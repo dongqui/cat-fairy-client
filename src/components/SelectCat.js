@@ -1,23 +1,10 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Modal } from '../common';
-import cheeseCat from '../asset/img/치즈냥.png'
-import blackCat from '../asset/img/깜장냥.png'
-import dottedCat from '../asset/img/점냥이.png'
-import greyCat from '../asset/img/회색냥.png'
-import whiteCate from '../asset/img/흰냥.png'
-import SpeechBalloon from './SpeechBalloon';
+import { Modal, SpeechBalloon } from '../common';
 import { Maybe } from './Maybe';
 
-function SelectCat() {
+function SelectCat({ cats, selectCat }) {
   const [ selectedCat, setSelectedCat ] = useState(null);
-  const cats = [
-    {src: cheeseCat, alt: 'cheeseCat'},
-    {src: blackCat, alt: 'blackCat'},
-    {src: dottedCat, alt: 'dottedCat'},
-    {src: greyCat, alt: 'greyCat'},
-    {src: whiteCate, alt: 'whiteCate'},
-  ];
 
   return (
     <S.SelectCatModal onChange={(e) => setSelectedCat(e.target.value)}>
@@ -25,9 +12,9 @@ function SelectCat() {
         cats.map(({ src, alt}) => (
           <S.CatImgWrapper isSelected={selectedCat === alt}>
             <Maybe test={selectedCat === alt}>
-              <SpeechBalloon top={-80} right={0}>
-                <S.SelectCatConfirm>안녕</S.SelectCatConfirm>
-              </SpeechBalloon>
+              <S.SelectCatConfirm top={-80} right={0}>
+                <button onClick={selectCat(selectedCat)}>OK</button>
+              </S.SelectCatConfirm>
             </Maybe>
             <input type="radio" name="test" value={alt}/>
             <img alt={alt} src={src}/>
@@ -37,7 +24,7 @@ function SelectCat() {
     </S.SelectCatModal>
   )
 }
-const SelectCatConfirm = styled.div`
+const SelectCatConfirm = styled(SpeechBalloon)`
   padding: 24px;
   background-color: peachpuff;
 `;
