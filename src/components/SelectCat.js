@@ -6,11 +6,11 @@ import blackCat from '../asset/img/깜장냥.png'
 import dottedCat from '../asset/img/점냥이.png'
 import greyCat from '../asset/img/회색냥.png'
 import whiteCate from '../asset/img/흰냥.png'
+import SpeechBalloon from './SpeechBalloon';
+import { Maybe } from './Maybe';
 
 function SelectCat() {
-
   const [ selectedCat, setSelectedCat ] = useState(null);
-
   const cats = [
     {src: cheeseCat, alt: 'cheeseCat'},
     {src: blackCat, alt: 'blackCat'},
@@ -24,6 +24,11 @@ function SelectCat() {
       {
         cats.map(({ src, alt}) => (
           <S.CatImgWrapper isSelected={selectedCat === alt}>
+            <Maybe test={selectedCat === alt}>
+              <SpeechBalloon top={-80} right={0}>
+                <S.SelectCatConfirm>안녕</S.SelectCatConfirm>
+              </SpeechBalloon>
+            </Maybe>
             <input type="radio" name="test" value={alt}/>
             <img alt={alt} src={src}/>
           </S.CatImgWrapper>
@@ -32,6 +37,10 @@ function SelectCat() {
     </S.SelectCatModal>
   )
 }
+const SelectCatConfirm = styled.div`
+  padding: 24px;
+  background-color: peachpuff;
+`;
 
 const SelectCatModal = styled(Modal)`
   display: flex;
@@ -46,6 +55,7 @@ const SelectCatEffect = css`
   }
 `;
 const CatImgWrapper = styled.label`
+  position: relative;
   flex-basis: 33%;
   > input {
     display: none;
@@ -61,6 +71,7 @@ const CatImgWrapper = styled.label`
 const S = {
   SelectCatModal,
   CatImgWrapper,
+  SelectCatConfirm,
 }
 
 export default SelectCat;
