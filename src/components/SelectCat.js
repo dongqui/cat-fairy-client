@@ -10,7 +10,7 @@ function SelectCat({ cats, selectCat }) {
     <S.SelectCatModal onChange={(e) => setSelectedCat(e.target.value)}>
       {
         cats.map(({ src, alt}) => (
-          <S.CatImgWrapper isSelected={selectedCat === alt}>
+          <S.CatImgWrapper key={alt} isSelected={selectedCat === alt}>
             <Maybe test={selectedCat === alt}>
               <S.SelectCatConfirm top={-80} right={0}>
                 <button onClick={selectCat(selectedCat)}>OK</button>
