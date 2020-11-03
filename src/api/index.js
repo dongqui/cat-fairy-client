@@ -12,7 +12,7 @@ export const getCommitHistoryApi = async (uid) => {
 
 export const selectCatApi = async (catType, uid) => {
   try {
-    await fireStore.doc(`users/${uid}`).set({catType,}, {merge: true});
+    await fireStore.collection('cats').add({ catType, uid });
   } catch (e) {
     throw e;
   }
