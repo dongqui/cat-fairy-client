@@ -47,6 +47,7 @@ const IntroMenuItem = styled.li`
   cursor: pointer;
 `
 const Container = styled.div`
+  text-align: center;
   width: 50%;
   position: absolute;
   top: 30%;
