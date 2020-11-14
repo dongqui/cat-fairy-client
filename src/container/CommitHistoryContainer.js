@@ -16,8 +16,6 @@ export function CommitHistoryContainer() {
   }, [dispatch, user]);
 
   return (
-    <Maybe test={isCommitHistoryOpen}>
-      <CommitHistory commitHistory={commitHistories} closeCommitHistory={closeCommitHistory}/>
-    </Maybe>
+    <CommitHistory commitHistory={commitHistories} closeCommitHistory={closeCommitHistory}/>
   )
 }

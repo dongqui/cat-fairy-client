@@ -1,44 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import CommitHistoryItem, {
-    CommitHistoryItemWrapper,
-    CommitHistoryDate,
-    CommitHistorySequence,
-    CommitHistoryReward,
-  } from './CommitHistoryItem';
+import CommitHistoryItem from './CommitHistoryItem';
 
 function CommitHistoryList({ commitHistories }) {
+  const arr = new Array(66).fill(0);
   return(
-    <S.CommitHistoryWrapper>
-      <S.CommitHistoryHeaderWrapper>
-        <S.CommitHistoryDate> 커밋 날짜 </S.CommitHistoryDate>
-        <S.CommitHistorySequence>연속일</S.CommitHistorySequence>
-        <S.CommitHistoryReward>보상</S.CommitHistoryReward>
-      </S.CommitHistoryHeaderWrapper>
+    <S.CommitHistoryListContainer>
       {
-        commitHistories||[1].map(commitHistory => <CommitHistoryItem key={'a'} commitHistory={commitHistory}/>)
+        arr.map((v, idx) => <CommitHistoryItem key={idx} number={idx}/>)
       }
-    </S.CommitHistoryWrapper>
+      <CommitHistoryItem/>
+    </S.CommitHistoryListContainer>
   )
 }
 
-const CommitHistoryWrapper = styled.ul`
+const CommitHistoryListContainer = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 10px;
 `;
-
-const CommitHistoryHeaderWrapper = styled(CommitHistoryItemWrapper)` 
-  border-bottom: 1px gray solid;
-  font-weight: 800;
-`;
-
 
 const S = {
-  CommitHistoryWrapper,
-  CommitHistoryHeaderWrapper,
-  CommitHistoryDate,
-  CommitHistorySequence,
-  CommitHistoryReward,
+  CommitHistoryListContainer,
 };
 
 export default CommitHistoryList;

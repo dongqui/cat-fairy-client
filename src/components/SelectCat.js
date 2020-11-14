@@ -12,8 +12,8 @@ function SelectCat({ cats, selectCat }) {
         cats.map(({ src, alt}) => (
           <S.CatImgWrapper key={alt} isSelected={selectedCat === alt}>
             <Maybe test={selectedCat === alt}>
-              <S.SelectCatConfirm top={-80} right={0}>
-                <button onClick={selectCat(selectedCat)}>OK</button>
+              <S.SelectCatConfirm top={-60} right={0}>
+                <button onClick={selectCat(selectedCat)}>간택 확정!</button>
               </S.SelectCatConfirm>
             </Maybe>
             <input type="radio" name="test" value={alt}/>
@@ -26,7 +26,6 @@ function SelectCat({ cats, selectCat }) {
 }
 const SelectCatConfirm = styled(SpeechBalloon)`
   padding: 24px;
-  background-color: peachpuff;
 `;
 
 const SelectCatModal = styled(Modal)`

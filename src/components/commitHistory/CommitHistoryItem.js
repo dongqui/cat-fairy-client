@@ -1,47 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function CommitHistoryItem() {
+function CommitHistoryItem({ number}) {
   return (
-    <S.CommitHistoryItemWrapper>
-      <S.CommitHistoryDate>
-        2020.07.01 ~ 2020.08.01
-      </S.CommitHistoryDate>
-      <S.CommitHistorySequence>
-        31
-      </S.CommitHistorySequence>
-      <S.CommitHistoryReward>
-        코인 31
-      </S.CommitHistoryReward>
-    </S.CommitHistoryItemWrapper>
+    <S.CommitHistoryItemContainer>
+      <S.CommitHistoryItemHeader>
+        { number }
+      </S.CommitHistoryItemHeader>
+      <S.CommitHistoryItemMain>
+        <S.CommitCheckCircle/>
+      </S.CommitHistoryItemMain>
+    </S.CommitHistoryItemContainer>
   )
 }
 
-export const CommitHistoryItemWrapper = styled.div`
-  display: flex;
-  padding: 12px 20px;
+const CommitHistoryItemContainer = styled.li`
+  flex: 0 0 120px;
+  margin: 5px;
+  &:empty {
+  height: 0;
+  border: none;
+}
 `;
-
-export const CommitHistoryDate = styled.div`
-  flex: 8;
+const CommitHistoryItemHeader = styled.header`
+  background-color: #414141;
+  color: #f5f5f5;
   text-align: center;
+  width: 100%;
 `;
-
-export const CommitHistorySequence = styled.div`
-  flex: 3;
-  text-align: center;
+const CommitHistoryItemMain = styled.main`
+  width: 100%;
 `;
-
-export const CommitHistoryReward = styled.div`
-  flex: 3;
-  text-align: center;
-`;
-
+const CommitCheckCircle = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  margin: 10px auto 0 auto;
+  background-color: green;
+`
 const S = {
-  CommitHistoryItemWrapper,
-  CommitHistoryDate,
-  CommitHistorySequence,
-  CommitHistoryReward
+  CommitHistoryItemContainer,
+  CommitHistoryItemHeader,
+  CommitHistoryItemMain,
+  CommitCheckCircle,
 };
 
 export default CommitHistoryItem;

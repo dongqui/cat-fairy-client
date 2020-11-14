@@ -8,16 +8,15 @@ function CommitHistory({ closeCommitHistory, }) {
   return(
     <S.CommitHistoryModal>
       <CommitHistoryList/>
-      <S.CommitHistoryModalFooter>
-        <button onClick={closeCommitHistory}>닫기</button>
-      </S.CommitHistoryModalFooter>
     </S.CommitHistoryModal>
   )
 }
 
 const CommitHistoryModal = styled(Modal)`
-  width: 30%;
+  width: 60%;
   height: 500px;
+  overflow-y: auto;
+
 `;
 
 const CommitHistoryModalFooter = styled.footer`
