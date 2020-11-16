@@ -1,16 +1,16 @@
-import {all, fork, take, call, put} from 'redux-saga/effects';
+import {all, take, call, put} from 'redux-saga/effects';
 import { LOGIN_WITH_GITHUB, signInWithRedirect } from './auth';
 import {
-  GET_COMMIT_HISTORY,
-  getCommitHistoryRequest,
-  getCommitHistorySuccess,
-  getCommitHistoryFailed,
+  GET_CHALLENGE_STATUS,
+  getChallengeStatusRequest,
+  getChallengeStatusSuccess,
+  getChallengeStatusFailed,
   SELECT_CAT,
   selectCatRequest,
   selectCatSuccess,
   selectCatFailed,
 } from './mian';
-import { getCommitHistoryApi,  selectCatApi } from '../api';
+import { getChallengeStatusApi,  selectCatApi } from '../api';
 
 function *watchGithubLogin() {
   while (true) {
@@ -19,15 +19,15 @@ function *watchGithubLogin() {
   }
 }
 
-function *watchGetCommitHistory() {
+function *watchGetChallengeStatus() {
   while (true) {
-    const { payload } = yield take(GET_COMMIT_HISTORY);
+    const { payload } = yield take(GET_CHALLENGE_STATUS);
     try {
-      yield put(getCommitHistoryRequest());
-      const commitHistory = yield call(getCommitHistoryApi, payload.uid);
-      yield put(getCommitHistorySuccess(commitHistory));
+      yield put(getChallengeStatusRequest());
+      const challengeHistory = yield call(getChallengeStatusApi, payload.uid);
+      yield put(getChallengeStatusSuccess(challengeHistory));
     } catch (error) {
-      yield put(getCommitHistoryFailed(error));
+      yield put(getChallengeStatusFailed(error));
     }
   }
 }
@@ -48,7 +48,7 @@ function *watchSelectCat() {
 export default function* rootSaga() {
   yield all([
     watchGithubLogin(),
-    watchGetCommitHistory(),
+    watchGetChallengeStatus(),
     watchSelectCat(),
   ]);
 }

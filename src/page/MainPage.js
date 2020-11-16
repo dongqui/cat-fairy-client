@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommitHistoryContainer, MainContainer, SelectCatContainer } from '../container/index';
+import { ChallengeStatusContainer, MainContainer, SelectCatContainer } from '../container/index';
 import { Maybe } from '../components/Maybe';
 
 export function MainPage() {
@@ -9,7 +9,7 @@ export function MainPage() {
       <Maybe text={false}>
         <SelectCatContainer/>
       </Maybe>
-      <CommitHistoryContainer/>
+      <ChallengeStatusContainer/>
     </>
   )
 }

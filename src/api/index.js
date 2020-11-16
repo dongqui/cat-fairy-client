@@ -1,9 +1,9 @@
 import axios from './axios';
 import { fireStore } from '../firebase';
 
-export const getCommitHistoryApi = async (uid) => {
+export const getChallengeStatusApi = async (uid) => {
   try {
-    const response = await axios.get('/updateCommitHistory', { params: { uid } });
+    const response = await axios.get('/getChallengeStatus', { params: { uid } });
     return response.data;
   } catch (e) {
     throw e;
