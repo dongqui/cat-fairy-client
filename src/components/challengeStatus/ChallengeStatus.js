@@ -2,12 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { Modal } from '../../common';
 import ChallengeStatusProgressBar from './ChallengeStatusProgressBar';
+import BasicImage from '../BasicImage';
+import whiteCate from '../../asset/img/흰냥.png'
 
-function ChallengeStatus({ closeChallengeStatus, }) {
+function ChallengeStatus({ }) {
 
   return(
     <S.ChallengeStatusModal>
-      <ChallengeStatusProgressBar/>
+      <S.ChallengeStatusProgressBarContainer>
+        <BasicImage src={'https://image.flaticon.com/icons/png/512/1768/1768116.png'} width={50} height={50} alt={'Start Icon'}/>
+        <ChallengeStatusProgressBar/>
+        <BasicImage src={whiteCate} width={80} height={80} alt={'End Icon'}/>
+      </S.ChallengeStatusProgressBarContainer>
     </S.ChallengeStatusModal>
   )
 }
@@ -18,19 +24,17 @@ const ChallengeStatusModal = styled(Modal)`
   padding: 50px 10px;
   overflow-y: auto;
 `;
-
-const ChallengeStatusModalFooter = styled.footer`
-  border-top: 1px solid gray;
-  padding: 24px 32px;
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+const ChallengeStatusProgressBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
 `;
 
 const S = {
   ChallengeStatusModal,
-  ChallengeStatusModalFooter
+  ChallengeStatusProgressBarContainer,
 };
 
 export default ChallengeStatus;
