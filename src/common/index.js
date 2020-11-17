@@ -7,15 +7,13 @@ export const HandDrawnBorder = css`
     &:hover {
       box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
     } 
-`
-
+`;
 export const Background = styled.div`
   background: ${props => `url(${props.url})`};
   background-size: 100% 100%;
   width: 100%;
   height: 100vh;
-`
-
+`;
 export const Modal = styled.div`
   ${HandDrawnBorder};
   background:white;
@@ -25,8 +23,7 @@ export const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-`
-
+`;
 export const SpeechBalloon = styled.div`
   position: absolute;
   z-index: 1;
